@@ -1,8 +1,7 @@
 kind: Pod
 apiVersion: v1
 metadata: 
-  name: config
-spec: 
-  containers:
-  - name: nginx
-  - image: nginx
+  name: myconfig
+data:
+  course: "kubernetes"
+  duration: "26hs"
