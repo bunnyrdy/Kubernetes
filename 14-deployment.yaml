@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: bunnyreddie/nginx:1.0
+        image: bunnyreddie/nginx:2.0
         ports:
         - containerPort: 80
 ---
