@@ -31,7 +31,7 @@ metadata:
 spec:
   type: LoadBalancer
   selector: # labels are used as selectors
-   app: nginx
+  app: nginx
   tier: frontend
       
   ports:
