@@ -32,15 +32,16 @@ spec:
       claimName: ebs-static
 ---
 
-kind: Service
 apiVersion: v1
+kind: Service
 metadata:
   name: nginx-lb
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
 spec:
   type: LoadBalancer
-  selector: # labels are used as selectors
+  selector:
     purpose: "ebs-static-demo"
-      
   ports:
   - protocol: TCP
     port: 80 # service port
