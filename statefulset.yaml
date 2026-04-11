@@ -22,7 +22,7 @@ spec:
     matchLabels:
       app: nginx # has to match .spec.template.metadata.labels
       demo: StatefulSet
-  serviceName: "nginx"
+  serviceName: "nginx-headless"
   replicas: 2 # by default is 1
   minReadySeconds: 10 # by default is 0
   template:
