@@ -67,6 +67,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: frontend
+  namespace: expense
   labels:
     app: frontend
     tier: web
@@ -95,6 +96,7 @@ kind: Service
 apiVersion: v1
 metadata:
   name: frontend
+  namespace: expense
 spec:
   type: LoadBalancer
   selector: # labels are used as selectors
