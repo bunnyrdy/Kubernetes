@@ -86,7 +86,6 @@ spec:
         tier: web
         project: expense
     spec:
-     spec:
       volumes:
       - name: nginx
         configMap:
