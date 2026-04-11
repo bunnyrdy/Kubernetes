@@ -33,6 +33,9 @@ spec:
       containers:
       - name: backend
         image: bunnyreddie/backend:1.0.0
+        envFrom:
+        - configMapRef:
+            name: backend
         
 ---
 kind: Service
