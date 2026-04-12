@@ -1,4 +1,3 @@
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -10,7 +9,7 @@ metadata:
     project: expense
     
 spec:
-  replicas: {{ .Values.deployment.replicas}}
+  replicas: {{ .Values.deployment.replicas }}
   selector:
     matchLabels:
       app: backend
@@ -25,7 +24,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: bunnyreddie/backend:{{ .Values.deployment.imageVersion}}
+        image: bunnyreddie/backend:{{ .Values.deployment.imageVersion }}
         envFrom:
         - configMapRef:
             name: backend
