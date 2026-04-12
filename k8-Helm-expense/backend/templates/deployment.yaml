@@ -2,47 +2,34 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: frontend
+  name: backend
   namespace: expense
   labels:
-    app: frontend
-    tier: web
-    project: expense   
+    app: backend
+    tier: backend
+    project: expense
+    
 spec:
-  replicas: {{ .Values.deployment.replicas }}
+  replicas: {{ .Values.deployment.replicas}}
   selector:
     matchLabels:
-      app: frontend
-      tier: web
+      app: backend
+      tier: backend
       project: expense
   template:
     metadata:
       labels:
-        app: frontend
-        tier: web
+        app: backend
+        tier: backend
         project: expense
     spec:
-      volumes:
-      - name: nginx
-        configMap:
-          name: nginx
-          items:
-            - key: nginx.conf
-              path: nginx.conf
       containers:
-      - name: nginx
-        image: bunnyreddie/frontend:{{ .Values.deployment.imageVersion }}
-        resources:
-          # soft limit
-          requests:
-            memory: "68Mi"
-            cpu: "100m"
-          # hard limit
-          limits:
-            memory: "128Mi"
-            cpu: "150m"
-        ports:
-        - containerPort: 8080
+      - name: backend
+        image: bunnyreddie/backend:{{ .Values.deployment.imageVersion}}
+        envFrom:
+        - configMapRef:
+            name: backend
+        
 
 
-
+    

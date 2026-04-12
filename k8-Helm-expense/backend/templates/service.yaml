@@ -1,19 +1,15 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: frontend
+  name: backend
   namespace: expense
 spec:
-  type: LoadBalancer
   selector: # labels are used as selectors
-    app: frontend
-    tier: web
+    app: backend
+    tier: backend
     project: expense
       
   ports:
   - protocol: TCP
-    port: 80 # service port
+    port: 8080 # service port
     targetPort: 8080
-    nodePort: {{ .Values.service.nodeport }}
-
-

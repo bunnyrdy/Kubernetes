@@ -1,0 +1,8 @@
+deployment:
+  replicas: 1
+  imageVersion: 1.0.0
+service:
+  nodeport: 30007
+autoscaling:
+  Utilization: 30
+
