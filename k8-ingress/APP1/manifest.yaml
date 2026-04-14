@@ -13,12 +13,12 @@ spec:
     metadata:
       labels: 
         app: app1
-  spec:
-    containers:
-    - name: app1
-      image: bunnyreddie/app1:1.0.0
-      ports:  
-      - containerPort: 80
+    spec:
+      containers:
+      - name: app1
+        image: bunnyreddie/app1:1.0.0
+        ports:  
+        - containerPort: 80
 
 ---
 
