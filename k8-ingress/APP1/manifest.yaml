@@ -1,4 +1,4 @@
-appVersion: apps/v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: app1
@@ -40,12 +40,13 @@ kind: Ingress
 metadata:
   name: app1
   annotations:
-  alb.ingress.kubernetes.io/scheme: internet-facing
-  alb.ingress.kubernetes.io/target-type: ip
-  alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 443}]'
-  alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:444152781209:certificate/1434465e-8cea-4771-a89d-9c210bd8e251
-  alb.ingress.kubernetes.io/group.name: joindevops
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 443}]'
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:444152781209:certificate/1434465e-8cea-4771-a89d-9c210bd8e251
+    alb.ingress.kubernetes.io/group.name: joindevops
 spec:
+  ingressClassName: alb
   rules:
   - host: "app1.fortunechits.online"
     http:
