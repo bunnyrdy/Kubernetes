@@ -1,0 +1,61 @@
+appVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app2
+  labels:
+    app: app2
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: app2
+  template:
+    metadata:
+      labels: 
+        app: app2
+  spec:
+    containers:
+    - name: app2
+      image: bunnyreddie/app2:1.0.0
+      ports:  
+      - containerPort: 80
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: app2
+spec:
+  selector: # labels are used as selectors
+    app: app2
+  ports:
+  - protocol: TCP
+    port: 80 # service port
+    targetPort: 80
+---
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: app2
+  annotations:
+  alb.ingress.kubernetes.io/scheme: internet-facing
+  alb.ingress.kubernetes.io/target-type: ip
+  alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 443}]'
+  alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:444152781209:certificate/1434465e-8cea-4771-a89d-9c210bd8e251
+  alb.ingress.kubernetes.io/group.name: joindevops
+spec:
+  rules:
+  - host: "app2.fortunechits.online"
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: app2
+            port:
+              number: 80
+  
+
