@@ -1,0 +1,10 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: sa-demo
+  namespace: expense
+spec:
+#one pod can contain multiple container 
+  containers: 
+  - name: nginx
+    image: nginx
