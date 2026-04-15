@@ -1,10 +1,10 @@
 apiVersion: v1
 data:
   mapRoles: |
-    - groups:
+    - rolearn: arn:aws:iam::444152781209:role/eksctl-expense-nodegroup-expense-NodeInstanceRole-cES5FqOQY30P
+      groups:
       - system:bootstrappers
       - system:nodes
-      rolearn: arn:aws:iam::444152781209:role/eksctl-expense-nodegroup-expense-NodeInstanceRole-cES5FqOQY30P
       username: system:node:{{EC2PrivateDNSName}}
   mapUsers: |
     - groups:
@@ -13,7 +13,7 @@ data:
       username: bunny
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2025-03-14T01:43:26Z"
+  creationTimestamp: "2026-04-14T14:35:00Z"
   name: aws-auth
   namespace: kube-system
-  uid: 50845162-1701-4375-9fdd-e93f835164a1
+  uid: cf2cb3d9-42ff-4783-9f8e-ca3112a28a05
