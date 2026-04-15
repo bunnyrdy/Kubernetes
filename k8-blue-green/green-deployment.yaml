@@ -27,7 +27,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: joindevops/backend:2.0.0
+        image: bunnyreddie/backend:2.0.0
         envFrom:
         - configMapRef:
             name: backend
